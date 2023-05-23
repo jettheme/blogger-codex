@@ -1,0 +1,25 @@
+<b:widget id='LinkList25' locked='false' title='Title List' type='LinkList' version='2' visible='true'>
+  <b:widget-settings>
+    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+    <b:widget-setting name='text-0'>List One</b:widget-setting>
+    <b:widget-setting name='link-0'>#</b:widget-setting>
+    <b:widget-setting name='text-1'>List Two</b:widget-setting>
+    <b:widget-setting name='link-1'>#</b:widget-setting>
+    <b:widget-setting name='text-2'>List Three</b:widget-setting>
+    <b:widget-setting name='link-2'>#</b:widget-setting>
+    <b:widget-setting name='text-3'>List Four</b:widget-setting>
+    <b:widget-setting name='link-3'>#</b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main'>
+    
+    <h2><data:title/></h2>
+    
+    <ul>
+      <b:loop values='data:links' var='link'>
+      <li><a expr:href='data:link.target'><data:link.name/></a></li>
+      </b:loop>
+    </ul>
+    
+  </b:includable>
+  <b:includable id='content'/>
+</b:widget>
