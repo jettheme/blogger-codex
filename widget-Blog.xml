@@ -71,7 +71,7 @@
     </b:if>
 
 
-    <b:comment>Loop Comments</b:comment>
+    <b:comment>Loop Comment</b:comment>
     <b:if cond='data:view.isPost or data:view.isPage'>
       <b:loop values='data:posts' var='post'>
 
