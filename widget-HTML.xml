@@ -1,0 +1,12 @@
+<b:widget id='HTML25' locked='false' title='Widget Title' type='HTML' version='2' visible='true'>
+  <b:widget-settings>
+    <b:widget-setting name='content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main'>
+  
+    <h2><data:title/></h2>
+    
+    <div><data:content/></div>
+    
+  </b:includable>
+</b:widget>
