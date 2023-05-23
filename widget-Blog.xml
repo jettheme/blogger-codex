@@ -6,6 +6,11 @@
     <b:comment>404</b:comment>
     <b:if cond='data:view.isError'>
       <p>404 Not Found</p>
+
+      <b:elseif cond='data:numPosts == 0'/>
+
+      <p>Publish Your First Post</p>
+
     </b:if>
 
 
