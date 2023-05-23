@@ -1,0 +1,172 @@
+<b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+  <b:widget-settings/>
+  <b:includable id='main' var='top'>
+
+
+    <b:comment>404</b:comment>
+    <b:if cond='data:view.isError'>
+      <p>404 Not Found</p>
+    </b:if>
+
+
+    <b:comment>Homepage or Archive</b:comment>
+    <b:if cond='data:view.isMultipleItems'>
+      <b:loop values='data:posts' var='post'>
+
+        <img expr:src='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage'/>
+
+        <h2><a expr:href='data:post.url.canonical'><data:post.title/></a></h2>
+
+        <p><data:post.snippets.short/></p>
+
+      </b:loop>
+    </b:if>
+
+
+    <b:comment>Single Post</b:comment>
+    <b:if cond='data:view.isPost'>
+      <b:loop values='data:posts' var='post'>
+        <h1><data:post.title/></h1>
+
+        <div>
+          <span>Author by: <data:post.author.name/></span> |
+          <span>Publish date: <data:post.date/></span> |
+          <span><data:post.numberOfComments/> Comments</span>
+        </div>
+
+        <p>Labels: 
+          <b:loop values='data:labels' var='label'>
+            <a expr:href='data:label.url.canonical'><data:label.name/></a>
+          </b:loop>
+        </p>
+
+        <div><data:post.body/></div>
+
+      </b:loop>
+    </b:if>
+
+
+    <b:comment>Single Page</b:comment>
+    <b:if cond='data:view.isPage'>
+      <b:loop values='data:posts' var='post'>
+
+        <h1><data:post.title/></h1>
+
+        <div><data:post.body/></div>
+
+      </b:loop>
+    </b:if>
+
+
+    <b:comment>Pagination</b:comment>
+    <b:if cond='data:view.isMultipleItems or data:view.isPost'>
+      <div>
+        <b:if cond='data:newerPageUrl'>
+          <a expr:href='data:newerPageUrl.canonical'>Previous Page</a> |
+        </b:if>
+        <b:if cond='data:olderPageUrl'>
+          <a expr:href='data:olderPageUrl.canonical'>Next Page</a>
+        </b:if>
+      </div>
+    </b:if>
+
+
+    <b:comment>Loop Comments</b:comment>
+    <b:if cond='data:view.isPost or data:view.isPage'>
+      <b:loop values='data:posts' var='post'>
+
+        <h2><data:post.numberOfComments/> Comments</h2>
+        <b:if cond='data:post.numberOfComments gt 0'>
+          <ul>
+            <b:loop values='data:post.comments where (c=&gt; not c.inReplyTo or c.inReplyTo == 0)' var='commentLevel1'>
+              <li>
+                <img expr:src='data:commentLevel1.authorAvatarSrc'/>
+                <span><data:commentLevel1.author/></span>
+                <p><data:commentLevel1.body/></p>
+                <a expr:href='data:post.commentFormIframeSrc appendParams{parentID: data:commentLevel1.id}'>Reply</a>
+
+                <b:comment>Loop Reply</b:comment>
+                <b:with value='data:post.comments where (c=&gt; c.inReplyTo == data:commentLevel1.id)' var='commentL2'>
+                  <b:if cond='data:commentL2.size gt 0'>
+                    <ul>
+                      <b:loop values='data:commentL2' var='commentLevel2'>
+                        <img expr:src='data:commentLevel2.authorAvatarSrc'/>
+                        <span><data:commentLevel2.author/></span>
+                        <p><data:commentLevel2.body/></p>
+                      </b:loop>
+                    </ul>
+                  </b:if>
+                </b:with>
+
+              </li>
+            </b:loop>
+          </ul>
+        </b:if>
+        <a expr:href='data:post.commentFormIframeSrc'>Add New Comment</a>
+
+      </b:loop>
+    </b:if>
+
+  </b:includable>
+  <b:includable id='aboutPostAuthor'/>
+  <b:includable id='addComments'/>
+  <b:includable id='blogThisShare'/>
+  <b:includable id='bylineByName'/>
+  <b:includable id='bylineRegion'/>
+  <b:includable id='commentAuthorAvatar'/>
+  <b:includable id='commentDeleteIcon'/>
+  <b:includable id='commentForm'/>
+  <b:includable id='commentFormIframeSrc'/>
+  <b:includable id='commentItem'/>
+  <b:includable id='commentList'/>
+  <b:includable id='commentPicker'/>
+  <b:includable id='comments'/>
+  <b:includable id='commentsLink'/>
+  <b:includable id='commentsLinkIframe'/>
+  <b:includable id='commentsTitle'/>
+  <b:includable id='defaultAdUnit'/>
+  <b:includable id='emailPostIcon'/>
+  <b:includable id='facebookShare'/>
+  <b:includable id='feedLinks'/>
+  <b:includable id='feedLinksBody'/>
+  <b:includable id='footerBylines'/>
+  <b:includable id='googlePlusShare'/>
+  <b:includable id='headerByline'/>
+  <b:includable id='homePageLink'/>
+  <b:includable id='iframeComments'/>
+  <b:includable id='inlineAd'/>
+  <b:includable id='linkShare'/>
+  <b:includable id='manageComments'/>
+  <b:includable id='nextPageLink'/>
+  <b:includable id='otherSharingButton'/>
+  <b:includable id='platformShare'/>
+  <b:includable id='post'/>
+  <b:includable id='postAuthor'/>
+  <b:includable id='postBody'/>
+  <b:includable id='postBodySnippet'/>
+  <b:includable id='postCommentsAndAd'/>
+  <b:includable id='postCommentsLink'/>
+  <b:includable id='postFooter'/>
+  <b:includable id='postFooterAuthorProfile'/>
+  <b:includable id='postHeader'/>
+  <b:includable id='postJumpLink' var='post'/>
+  <b:includable id='postLabels'/>
+  <b:includable id='postLocation'/>
+  <b:includable id='postMeta'/>
+  <b:includable id='postMetadataJSONImage'/>
+  <b:includable id='postMetadataJSONPublisher'/>
+  <b:includable id='postPagination'/>
+  <b:includable id='postReactions'/>
+  <b:includable id='postShareButtons'/>
+  <b:includable id='postTimestamp'/>
+  <b:includable id='postTitle'/>
+  <b:includable id='previousPageLink'/>
+  <b:includable id='sharingButton'/>
+  <b:includable id='sharingButtonContent'/>
+  <b:includable id='sharingButtons'/>
+  <b:includable id='sharingButtonsMenu'/>
+  <b:includable id='sharingPlatformIcon'/>
+  <b:includable id='threadedCommentForm'/>
+  <b:includable id='threadedCommentJs'/>
+  <b:includable id='threadedComments'/>
+</b:widget>
