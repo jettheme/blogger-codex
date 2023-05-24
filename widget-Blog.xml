@@ -1,4 +1,4 @@
-<b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+<b:widget id='Blog1' locked='false' title='Blog Posts' type='Blog' version='2' visible='true'>
   <b:widget-settings/>
   <b:includable id='main' var='top'>
 
